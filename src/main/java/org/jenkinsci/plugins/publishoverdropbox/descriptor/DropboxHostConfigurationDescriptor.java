@@ -37,8 +37,8 @@ import org.jenkinsci.plugins.publishoverdropbox.impl.DropboxHostConfiguration;
 import org.jenkinsci.plugins.publishoverdropbox.impl.DropboxPublisherPlugin;
 import org.jenkinsci.plugins.publishoverdropbox.impl.Messages;
 import org.kohsuke.stapler.QueryParameter;
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
+import org.kohsuke.stapler.StaplerRequest2;
+import org.kohsuke.stapler.StaplerResponse2;
 
 import java.util.List;
 
@@ -86,7 +86,7 @@ public class DropboxHostConfigurationDescriptor extends Descriptor<DropboxHostCo
         return CredentialsProvider.lookupCredentials(DropboxToken.class, Jenkins.get(), null, (DomainRequirement) null);
     }
 
-    public FormValidation doTestConnection(final StaplerRequest request, final StaplerResponse response) {
+    public FormValidation doTestConnection(final StaplerRequest2 request, final StaplerResponse2 response) {
         final DropboxPublisherPlugin.Descriptor pluginDescriptor = Jenkins.get().getDescriptorByType(
                 DropboxPublisherPlugin.Descriptor.class);
         return pluginDescriptor.doTestConnection(request, response);

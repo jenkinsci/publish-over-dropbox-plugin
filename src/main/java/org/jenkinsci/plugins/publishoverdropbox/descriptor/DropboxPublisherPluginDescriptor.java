@@ -40,8 +40,8 @@ import net.sf.json.JSONObject;
 import org.jenkinsci.plugins.publishoverdropbox.impl.DropboxHostConfiguration;
 import org.jenkinsci.plugins.publishoverdropbox.impl.DropboxPublisherPlugin;
 import org.jenkinsci.plugins.publishoverdropbox.impl.Messages;
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
+import org.kohsuke.stapler.StaplerRequest2;
+import org.kohsuke.stapler.StaplerResponse2;
 
 import java.util.List;
 
@@ -77,7 +77,7 @@ public class DropboxPublisherPluginDescriptor extends BuildStepDescriptor<Publis
         return null;
     }
 
-    public boolean configure(final StaplerRequest request, final JSONObject formData) {
+    public boolean configure(final StaplerRequest2 request, final JSONObject formData) {
         hostConfigurations.replaceBy(request.bindJSONToList(DropboxHostConfiguration.class, formData.get("instance")));
         save();
         return true;
@@ -111,7 +111,7 @@ public class DropboxPublisherPluginDescriptor extends BuildStepDescriptor<Publis
         return new jenkins.plugins.publish_over.view_defaults.manage_jenkins.Messages();
     }
 
-    public FormValidation doTestConnection(final StaplerRequest request, final StaplerResponse response) {
+    public FormValidation doTestConnection(final StaplerRequest2 request, final StaplerResponse2 response) {
         final DropboxHostConfiguration hostConfig = request.bindParameters(DropboxHostConfiguration.class, "");
         final BPBuildInfo buildInfo = createDummyBuildInfo();
         try {
