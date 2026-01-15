@@ -11,94 +11,95 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <version>4.13</version>
-        <relativePath />
-    </parent>
-    <artifactId>publish-over-dropbox</artifactId>
-    <version>1.3.3-SNAPSHOT</version>
-    <packaging>hpi</packaging>
+  <parent>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>plugin</artifactId>
+      <version>5.2098.v4d48a_c4c68e7</version>
+      <relativePath />
+  </parent>
 
-    <name>Publish Over Dropbox</name>
-    <description>Send build artifacts to Dropbox account</description>
-    <url>https://github.com/jenkinsci/publish-over-dropbox-plugin</url>
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://opensource.org/licenses/MIT</url>
-            <comments>All source code is under the MIT license.</comments>
-        </license>
-    </licenses>
+  <artifactId>publish-over-dropbox</artifactId>
+  <version>1.3.3-SNAPSHOT</version>
+  <packaging>hpi</packaging>
 
-    <developers>
-        <developer>
-            <id>rcgroot</id>
-            <name>René de Groot</name>
-            <email>rcgroot@gmail.com</email>
-        </developer>
-    </developers>
+  <name>Publish Over Dropbox</name>
+  <description>Send build artifacts to Dropbox account</description>
+  <url>https://github.com/jenkinsci/publish-over-dropbox-plugin</url>
+  <licenses>
+      <license>
+          <name>MIT License</name>
+          <url>http://opensource.org/licenses/MIT</url>
+          <comments>All source code is under the MIT license.</comments>
+      </license>
+  </licenses>
 
-    <properties>
-        <jenkins.version>2.204.6</jenkins.version>
-        <java.level>8</java.level>
-    </properties>
+  <developers>
+      <developer>
+          <id>rcgroot</id>
+          <name>René de Groot</name>
+          <email>rcgroot@gmail.com</email>
+      </developer>
+  </developers>
 
-    <!-- Assuming you want to host on @jenkinsci: -->
-    <scm>
-        <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
-        <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
-        <tag>HEAD</tag>
-    </scm>
+  <!-- Assuming you want to host on @jenkinsci: -->
+  <scm>
+      <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
+      <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
+      <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
+      <tag>HEAD</tag>
+  </scm>
 
-    <repositories>
-        <repository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>repo.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
+  <properties>
+    <jenkins.baseline>2.479</jenkins.baseline>
+    <artifactId>bom-${jenkins.baseline}.x</artifactId>
+    <jenkins.version>${jenkins.baseline}.3</jenkins.version>
+  </properties>
 
+  <dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>publish-over</artifactId>
-            <version>0.22</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>credentials</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-step-api</artifactId>
-        </dependency>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-${jenkins.baseline}.x</artifactId>
+        <version>5054.v620b_5d2b_d5e6</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
     </dependencies>
+  </dependencyManagement>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.204.x</artifactId>
-                <version>18</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+  <dependencies>
+      <dependency>
+          <groupId>org.jenkins-ci.plugins</groupId>
+          <artifactId>publish-over</artifactId>
+          <version>0.22</version>
+      </dependency>
+      <dependency>
+          <groupId>org.jenkins-ci.plugins</groupId>
+          <artifactId>credentials</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.3.1</version>
+      </dependency>
+      <dependency>
+          <groupId>org.jenkins-ci.plugins.workflow</groupId>
+          <artifactId>workflow-step-api</artifactId>
+      </dependency>
+  </dependencies>
 
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
