@@ -69,8 +69,8 @@ public class DropboxHostConfiguration extends BPHostConfiguration<DropboxClient,
         return null;
     }
 
-    public DropboxToken getToken() {
-        return token;
+    public String getToken() {
+        return token != null ? token.getId() : null;
     }
 
     public void setToken(final DropboxToken token) {
