@@ -27,10 +27,10 @@ package org.jenkinsci.plugins.publishoverdropbox.impl;
 import hudson.model.Describable;
 import jenkins.model.Jenkins;
 import jenkins.plugins.publish_over.BapPublisher;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.jenkinsci.plugins.publishoverdropbox.descriptor.DropboxPublisherDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 
