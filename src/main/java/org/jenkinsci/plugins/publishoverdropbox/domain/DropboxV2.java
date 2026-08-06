@@ -31,7 +31,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import hudson.util.Secret;
 import jenkins.model.Jenkins;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jenkinsci.plugins.publishoverdropbox.DropboxToken;
 import org.jenkinsci.plugins.publishoverdropbox.domain.model.*;
 import org.jenkinsci.plugins.publishoverdropbox.domain.model.requests.*;

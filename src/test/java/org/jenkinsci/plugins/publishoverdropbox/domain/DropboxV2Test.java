@@ -23,7 +23,7 @@
  */
 package org.jenkinsci.plugins.publishoverdropbox.domain;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jenkinsci.plugins.publishoverdropbox.domain.model.FolderContent;
 import org.jenkinsci.plugins.publishoverdropbox.domain.model.FolderMetadata;
 import org.jenkinsci.plugins.publishoverdropbox.domain.model.Metadata;
