@@ -32,15 +32,14 @@ import hudson.Util;
 import hudson.util.Secret;
 import org.jenkinsci.plugins.publishoverdropbox.impl.Messages;
 
-import javax.annotation.Nonnull;
 
 @NameWith(DropboxToken.NameProvider.class)
 public interface DropboxToken extends StandardCredentials {
 
-    @Nonnull
+    @NonNull
     Secret getAuthorizationCode();
 
-    @Nonnull
+    @NonNull
     Secret getAccessCode();
 
     class NameProvider extends CredentialsNameProvider<DropboxToken> {

@@ -34,6 +34,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.accmod.restrictions.suppressions.SuppressRestrictedWarnings;
 
 public class DropboxPublisherLabel extends PublisherLabel implements Describable<DropboxPublisherLabel> {
 
@@ -65,6 +66,7 @@ public class DropboxPublisherLabel extends PublisherLabel implements Describable
     }
 
     @Extension
+    @SuppressRestrictedWarnings(jenkins.plugins.publish_over.view_defaults.PublisherLabel.Messages.class)
     public static class DropboxPublisherLabelDescriptor extends Descriptor<DropboxPublisherLabel> {
 
         @Override

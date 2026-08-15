@@ -39,7 +39,7 @@ import org.jenkinsci.plugins.publishoverdropbox.impl.Messages;
 import org.jenkinsci.plugins.workflow.steps.StepContextParameter;
 import org.jenkinsci.plugins.workflow.steps.StepExecution;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,8 +47,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import static jenkins.util.BuildListenerAdapter.wrap;
+import java.io.Serializable;
 
-public class DropboxPublishStepExecution extends StepExecution implements BPHostConfigurationAccess<DropboxClient, Object> {
+public class DropboxPublishStepExecution extends StepExecution implements BPHostConfigurationAccess<DropboxClient, Serializable> {
 
     private static final long serialVersionUID = 1L;
 
@@ -106,7 +107,7 @@ public class DropboxPublishStepExecution extends StepExecution implements BPHost
     }
 
     @Override
-    public void stop(@Nonnull Throwable cause) throws Exception {
+    public void stop(@NonNull Throwable cause) throws Exception {
         cancelCause = cause;
         setCanceled(true);
     }
@@ -130,7 +131,7 @@ public class DropboxPublishStepExecution extends StepExecution implements BPHost
     }
 
     @Override
-    public BPHostConfiguration<DropboxClient, Object> getConfiguration(String name) {
+    public BPHostConfiguration<DropboxClient, Serializable> getConfiguration(String name) {
         final DropboxPublisherPlugin.Descriptor pluginDescriptor = Jenkins.get().getDescriptorByType(DropboxPublisherPlugin.Descriptor.class);
         return pluginDescriptor.getConfiguration(step.getConfigName());
     }

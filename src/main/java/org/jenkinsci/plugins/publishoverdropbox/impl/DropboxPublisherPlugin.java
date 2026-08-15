@@ -37,8 +37,9 @@ import org.jenkinsci.plugins.publishoverdropbox.domain.DropboxClient;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class DropboxPublisherPlugin extends BPPlugin<DropboxPublisher, DropboxClient, Object> {
+public class DropboxPublisherPlugin extends BPPlugin<DropboxPublisher, DropboxClient, Serializable> {
 
     private static final long serialVersionUID = 1L;
 
