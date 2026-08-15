@@ -30,8 +30,10 @@ import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.publishoverdropbox.impl.DropboxPublisher;
 import org.jenkinsci.plugins.publishoverdropbox.impl.DropboxPublisherPlugin;
 import org.jenkinsci.plugins.publishoverdropbox.impl.Messages;
+import org.kohsuke.accmod.restrictions.suppressions.SuppressRestrictedWarnings;
 
 @Extension
+@SuppressRestrictedWarnings(jenkins.plugins.publish_over.view_defaults.BapPublisher.Messages.class)
 public class DropboxPublisherDescriptor extends Descriptor<DropboxPublisher> {
 
     public DropboxPublisherDescriptor() {

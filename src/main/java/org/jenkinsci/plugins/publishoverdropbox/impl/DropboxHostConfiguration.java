@@ -44,8 +44,9 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.IOException;
 import java.util.List;
+import java.io.Serializable;
 
-public class DropboxHostConfiguration extends BPHostConfiguration<DropboxClient, Object> implements Describable<DropboxHostConfiguration> {
+public class DropboxHostConfiguration extends BPHostConfiguration<DropboxClient, Serializable> implements Describable<DropboxHostConfiguration> {
 
     public static final int DEFAULT_TIMEOUT = 300000;
     private static final long serialVersionUID = 1L;

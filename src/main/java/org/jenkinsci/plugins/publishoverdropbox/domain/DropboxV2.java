@@ -38,7 +38,7 @@ import org.jenkinsci.plugins.publishoverdropbox.domain.model.requests.*;
 import org.jenkinsci.plugins.publishoverdropbox.gson.RuntimeTypeAdapterFactory;
 import org.jenkinsci.plugins.publishoverdropbox.impl.Messages;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -147,7 +147,7 @@ public class DropboxV2 implements DropboxAdapter {
     }
 
     @Override
-    public boolean changeWorkingDirectory(@Nonnull String relativePath) throws RestException {
+    public boolean changeWorkingDirectory(@NonNull String relativePath) throws RestException {
         boolean hasSuccess = true;
         try {
             if (!StringUtils.isEmpty(relativePath)) {
@@ -163,7 +163,7 @@ public class DropboxV2 implements DropboxAdapter {
     }
 
     @Override
-    public FolderMetadata makeDirectory(@Nonnull String path) throws RestException {
+    public FolderMetadata makeDirectory(@NonNull String path) throws RestException {
         URL url = getUrl(URL_CREATE_FOLDER);
         FolderMetadata folder = null;
         String absolute = createAbsolutePath(path);
@@ -213,12 +213,12 @@ public class DropboxV2 implements DropboxAdapter {
         }
     }
 
-    void delete(@Nonnull Metadata metadata) throws RestException {
+    void delete(@NonNull Metadata metadata) throws RestException {
         final String path = metadata.getPathLower();
         delete(path);
     }
 
-    void delete(@Nonnull String path) throws RestException {
+    void delete(@NonNull String path) throws RestException {
         URL url = getUrl(URL_OPS_DELETE);
         DeleteRequest requestContent = new DeleteRequest();
         String absolute = createAbsolutePath(path);
@@ -236,7 +236,7 @@ public class DropboxV2 implements DropboxAdapter {
     }
 
     @Override
-    public void pruneFolder(@Nonnull String path, int pruneRootDays) throws RestException {
+    public void pruneFolder(@NonNull String path, int pruneRootDays) throws RestException {
         Date cutoff = new Date(System.currentTimeMillis() - pruneRootDays * MILLISECONDS_PER_DAY);
         String absolute = createAbsolutePath(path);
         FolderContent contents = listFilesOfPath(absolute);
@@ -257,7 +257,7 @@ public class DropboxV2 implements DropboxAdapter {
         while (contents.hasMore() && cursor != null);
     }
 
-    private boolean isEntryModifiedSince(@Nonnull Metadata metadata, @Nonnull Date cutoff) throws RestException {
+    private boolean isEntryModifiedSince(@NonNull Metadata metadata, @NonNull Date cutoff) throws RestException {
         boolean isModifiedSince = false;
         if (metadata instanceof FileMetadata) {
             Date lastModified = parseDate(((FileMetadata) metadata).getServerModified());
@@ -315,7 +315,7 @@ public class DropboxV2 implements DropboxAdapter {
      */
 
     @Override
-    public void storeFile(@Nonnull String name, @Nonnull InputStream content, long length) throws RestException {
+    public void storeFile(@NonNull String name, @NonNull InputStream content, long length) throws RestException {
         if (length <= chunkSize) {
             singleStore(name, content, length);
         } else {
@@ -327,7 +327,7 @@ public class DropboxV2 implements DropboxAdapter {
      * Private helpers
      * */
 
-    private FileMetadata singleStore(@Nonnull String name, @Nonnull InputStream content, long length) throws RestException {
+    private FileMetadata singleStore(@NonNull String name, @NonNull InputStream content, long length) throws RestException {
         URL url = getUrl(URL_UPLOAD);
         UploadRequest uploadRequest = new UploadRequest();
         uploadRequest.setPath(createPath(name));
@@ -389,11 +389,11 @@ public class DropboxV2 implements DropboxAdapter {
     }
 
     @VisibleForTesting
-    FolderContent listFilesOfFolder(@Nonnull FolderMetadata folder) throws RestException {
+    FolderContent listFilesOfFolder(@NonNull FolderMetadata folder) throws RestException {
         return listFilesOfPath(folder.getPathLower());
     }
 
-    private FolderContent listFilesOfPath(@Nonnull String path) throws RestException {
+    private FolderContent listFilesOfPath(@NonNull String path) throws RestException {
         URL url = getUrl(URL_LIST_FOLDER);
         ListFolderRequest requestContent = new ListFolderRequest();
         requestContent.setPath(path);
@@ -472,7 +472,7 @@ public class DropboxV2 implements DropboxAdapter {
         return builder.build();
     }
 
-    private <T> JsonObjectRequest<T> requestForUpload(URL url, Object requestContent, Class<T> responseClass, @Nonnull InputStream content, long length) {
+    private <T> JsonObjectRequest<T> requestForUpload(URL url, Object requestContent, Class<T> responseClass, @NonNull InputStream content, long length) {
         JsonObjectRequest.Builder<T> builder = new JsonObjectRequest.Builder<T>()
                 .url(url)
                 .gson(gson)

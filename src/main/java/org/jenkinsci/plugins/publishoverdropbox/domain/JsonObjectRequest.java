@@ -30,7 +30,7 @@ import hudson.ProxyConfiguration;
 import org.apache.commons.io.IOUtils;
 import org.jenkinsci.plugins.publishoverdropbox.impl.Messages;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -102,7 +102,7 @@ class JsonObjectRequest<T> {
             return this;
         }
 
-        public Builder<T> addHeader(@Nonnull String key, @Nonnull String value) {
+        public Builder<T> addHeader(@NonNull String key, @NonNull String value) {
             request.headers.put(key, value);
             return this;
         }

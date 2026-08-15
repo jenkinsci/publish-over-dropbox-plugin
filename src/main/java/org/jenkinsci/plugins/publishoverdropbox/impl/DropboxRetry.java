@@ -36,6 +36,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
+import org.kohsuke.accmod.restrictions.suppressions.SuppressRestrictedWarnings;
 
 public class DropboxRetry extends Retry implements Describable<DropboxRetry> {
 
@@ -67,6 +68,7 @@ public class DropboxRetry extends Retry implements Describable<DropboxRetry> {
     }
 
     @Extension
+    @SuppressRestrictedWarnings(jenkins.plugins.publish_over.view_defaults.Retry.Messages.class)
     public static class DropboxRetryDescriptor extends Descriptor<DropboxRetry> {
 
         @Override

@@ -33,20 +33,20 @@ import org.jenkinsci.plugins.publishoverdropbox.domain.DropboxV2;
 import org.jenkinsci.plugins.publishoverdropbox.domain.model.RestException;
 import org.kohsuke.stapler.DataBoundConstructor;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.IOException;
 
 public class DropboxTokenImpl extends BaseStandardCredentials implements DropboxToken {
 
     static final long serialVersionUID = 43L;
 
-    @Nonnull
+    @NonNull
     private final Secret authorizationCode;
-    @Nonnull
+    @NonNull
     private final Secret accessCode;
 
     @DataBoundConstructor
-    public DropboxTokenImpl(CredentialsScope scope, String id, @Nonnull Secret authorizationCode, String description) throws IOException {
+    public DropboxTokenImpl(CredentialsScope scope, String id, @NonNull Secret authorizationCode, String description) throws IOException {
         super(scope, id, description);
         this.authorizationCode = authorizationCode;
         try {
@@ -56,13 +56,13 @@ public class DropboxTokenImpl extends BaseStandardCredentials implements Dropbox
         }
     }
 
-    @Nonnull
+    @NonNull
     @Override
     public Secret getAuthorizationCode() {
         return authorizationCode;
     }
 
-    @Nonnull
+    @NonNull
     @Override
     public Secret getAccessCode() {
         return accessCode;

@@ -44,6 +44,9 @@ import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
 import java.util.List;
+import org.kohsuke.accmod.restrictions.suppressions.SuppressRestrictedWarnings;
+
+@SuppressRestrictedWarnings({jenkins.plugins.publish_over.view_defaults.BPInstanceConfig.Messages.class, jenkins.plugins.publish_over.view_defaults.manage_jenkins.Messages.class})
 
 public class DropboxPublisherPluginDescriptor extends BuildStepDescriptor<Publisher> {
 

@@ -41,8 +41,10 @@ import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
 import java.util.List;
+import org.kohsuke.accmod.restrictions.suppressions.SuppressRestrictedWarnings;
 
 @Extension
+@SuppressRestrictedWarnings(jenkins.plugins.publish_over.view_defaults.HostConfiguration.Messages.class)
 public class DropboxHostConfigurationDescriptor extends Descriptor<DropboxHostConfiguration> {
 
     public DropboxHostConfigurationDescriptor() {
